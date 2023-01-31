@@ -29,4 +29,3 @@ flutter:
   uses-material-design: true
   assets:
     - lib/images/home_img.jpg
-    - lib/images/home_img2.png
