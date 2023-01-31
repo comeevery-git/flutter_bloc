@@ -4,36 +4,43 @@ class MainCountArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 60,
-      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+      padding: EdgeInsets.only(left: 8, right: 8, top: 16),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
           Container(
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Text(
-                '최근 한달 누적 통화 수 10,000회',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black45,
-                ),
+            child: Text(
+              '-----------------',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black38,
               ),
             ),
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFFEA3686),
+          Container(
+            child: Text(
+              '15,420회',
+              style: TextStyle(
+                fontSize: 18,
+                color: Color(0xFF6D49FE),
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            onPressed: () {},
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Text(
-                '매칭 설정',
-                style: TextStyle(
-                  fontSize: 17,
-                  color: Color(0xFFFCFCFC),
+          ),
+          Container(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFEA3686),
+              ),
+              onPressed: () {},
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  '매칭 설정',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Color(0xFFFCFCFC),
+                  ),
                 ),
               ),
             ),
