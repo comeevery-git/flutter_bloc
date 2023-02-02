@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'setting_page.dart';
 import 'widget/sliding_app_bar.dart';
 
-class SettingView extends State<SettingPage>
+class SettingScreen extends StatefulWidget {
+  @override
+  SettingView createState() => SettingView();
+}
+
+class SettingView extends State<SettingScreen>
     with SingleTickerProviderStateMixin {
   bool _visible = true;
   late final AnimationController _controller;

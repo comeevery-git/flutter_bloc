@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 
-class CountObserver extends BlocObserver {
+class Observer extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     print('$bloc.runtimeType, change');

@@ -1,16 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'bloc/count_observer.dart';
-import 'bloc/view/utils/custom_navigator.dart';
-import 'bloc/view/community_page.dart';
-import 'bloc/view/counter_page.dart';
-import 'bloc/view/setting_page.dart';
-import 'bloc/view/widget/main_connect_btn.dart';
-import 'bloc/view/widget/main_count_area.dart';
+import 'package:provider/provider.dart';
+import 'src/bloc/todo_bloc.dart';
+import 'src/observer.dart';
+import 'src/cubit/count_cubit.dart';
+import 'src/repository/todo_repository.dart';
+import 'src/screen/home_screen.dart';
+import 'src/screen/widget/custom_navigator.dart';
+import 'src/screen/todo_screen.dart';
+import 'src/screen/counter_screen.dart';
+import 'src/screen/setting_screen.dart';
 
 void main() {
-  Bloc.observer = CountObserver();
-  runApp(const MyApp());
+  Bloc.observer = Observer();
+  runApp(
+    MultiProvider(
+      // BlocProvider: 자식에게 Bloc을 제공하는 위젯
+      // MultiProvider: Provider 여러개 등록
+      providers: [
+        BlocProvider(
+          create: (context) => TodoBloc(TodoRepository()),
+        ),
+        BlocProvider(
+          create: (context) => CountCubit(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,6 +36,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final themeNotifier = Provider<ThemeNotifier>(context);
+
     return MaterialApp(
       title: 'State Manager - Bloc Main',
       theme: ThemeData(
@@ -38,10 +56,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final _pages = [
-    HomePage(),
-    CommunityPage(),
-    CounterPage(),
-    SettingPage(),
+    HomeScreen(),
+    TodoScreen(),
+    CounterScreen(),
+    SettingScreen(),
   ];
   final _navigatorKeyList =
       List.generate(4, (index) => GlobalKey<NavigatorState>());
@@ -145,109 +163,6 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   title: Text(
-      //     '',
-      //   ),
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0.0,
-      // ),
-      // extendBodyBehindAppBar: true,
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Image.asset(
-                  'lib/images/home_img.jpg',
-                  fit: BoxFit.cover,
-                ),
-                SafeArea(
-                  child: Column(
-                    children: <Widget>[
-                      Stack(
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 24, 0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Icon(Icons.favorite,
-                                    color: Colors.pink, size: 24.0),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                                  child: Text(
-                                    '100',
-                                    style: TextStyle(
-                                      color: Color(0xFFFCFCFC),
-                                      fontSize: 20,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(24, 58, 0, 0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.baseline,
-                              textBaseline: TextBaseline.alphabetic,
-                              children: [
-                                Icon(Icons.favorite,
-                                    color: Colors.pink, size: 18.0),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                                  child: Text(
-                                    '평생 딱 한번 첫! 구매 반값 이벤트',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Color(0xFFFCFCFC),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(24, 180, 0, 0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  '가운데\n컨텐츠.',
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            MainCountArea(),
-            MainConnectBtn(),
-          ],
         ),
       ),
     );
