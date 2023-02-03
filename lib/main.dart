@@ -10,6 +10,7 @@ import 'src/screen/widget/custom_navigator.dart';
 import 'src/screen/todo_screen.dart';
 import 'src/screen/counter_screen.dart';
 import 'src/screen/setting_screen.dart';
+import 'src/utils/constants.dart';
 
 void main() {
   Bloc.observer = Observer();
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'State Manager - Bloc Main',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: Home(),
     );
@@ -92,11 +93,11 @@ class _HomeState extends State<Home> {
           ),
           bottomNavigationBar: Container(
             width: MediaQuery.of(context).size.width,
-            height: 70,
+            height: kBottomContainerHeight,
             decoration: BoxDecoration(
               border: Border(
                 top: BorderSide(
-                  color: Colors.black12,
+                  color: kBorderColorAccent.withAlpha(80),
                   width: 1.5,
                 ),
               ),
@@ -108,8 +109,8 @@ class _HomeState extends State<Home> {
                   child: TabBar(
                     labelPadding: EdgeInsets.fromLTRB(32, 5, 32, 5),
                     isScrollable: true,
-                    labelColor: Color(0xFFEA3686),
-                    unselectedLabelColor: Colors.black12,
+                    labelColor: kTextColorAccent,
+                    unselectedLabelColor: kTextColorGrey,
                     indicatorColor: Colors.transparent,
                     onTap: (index) => setState(() {
                       _currentIndex = index;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/constants.dart';
+
 class MainCountArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,38 +12,22 @@ class MainCountArea extends StatelessWidget {
         children: [
           Container(
             child: Text(
-              '-----------------',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black38,
-              ),
+              '최근 가입자 수',
+              style: TextStyle(fontSize: 20, color: kTextColorGrey),
             ),
           ),
           Container(
-            child: Text(
-              '15,420회',
-              style: TextStyle(
-                fontSize: 18,
-                color: Color(0xFF6D49FE),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            child: Text('15,420회', style: kTextStyleAccent),
           ),
           Container(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFEA3686),
+                backgroundColor: kBackgroundColor,
               ),
               onPressed: () {},
               child: Padding(
                 padding: EdgeInsets.all(10),
-                child: Text(
-                  '매칭 설정',
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: Color(0xFFFCFCFC),
-                  ),
-                ),
+                child: Text('상세보기', style: kTextStyle),
               ),
             ),
           ),

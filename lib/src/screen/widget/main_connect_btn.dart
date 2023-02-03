@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:state_management/src/utils/constants.dart';
 
 class MainConnectBtn extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class MainConnectBtn extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 40,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF6D49FE),
+                backgroundColor: kTextColorAccent,
               ),
               onPressed: () {},
               child: Padding(
@@ -21,7 +22,7 @@ class MainConnectBtn extends StatelessWidget {
                   '이야기 시작해볼까요?',
                   style: TextStyle(
                     fontSize: 22,
-                    color: Color(0xFFFCFCFC),
+                    color: kTextColor,
                   ),
                 ),
               ),

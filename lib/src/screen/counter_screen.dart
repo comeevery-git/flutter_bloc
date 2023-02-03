@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../cubit/count_cubit.dart';
+import '../utils/constants.dart';
 
 class CounterScreen extends StatelessWidget {
   const CounterScreen({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class CounterScreen extends StatelessWidget {
             onPressed: () => context.read<CountCubit>().increment(),
             child: const Icon(Icons.add),
           ),
-          const SizedBox(height: 8),
+          kSizeBox,
           FloatingActionButton(
             onPressed: () => context.read<CountCubit>().decrement(),
             child: const Icon(Icons.remove),

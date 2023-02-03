@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/todo_bloc.dart';
 import '../bloc/todo_event.dart';
 import '../bloc/todo_state.dart';
+import '../utils/constants.dart';
 
 class TodoScreen extends StatefulWidget {
   TodoScreen({Key? key}) : super(key: key);
@@ -31,9 +32,7 @@ class _TodoScreenState extends State<TodoScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(
-          Icons.edit,
-        ),
+        child: Icon(Icons.edit),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -44,7 +43,7 @@ class _TodoScreenState extends State<TodoScreen> {
                 this.title = val;
               },
             ),
-            SizedBox(height: 16.0),
+            kSizeBox,
             // TodoBloc 에서 emit 발생 시 대응가능
             Expanded(
               child: BlocBuilder<TodoBloc, TodoState>(

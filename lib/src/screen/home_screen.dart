@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../utils/constants.dart';
 import 'widget/main_connect_btn.dart';
 import 'widget/main_count_area.dart';
 
@@ -38,17 +39,13 @@ class HomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Icon(Icons.favorite,
-                                    color: Colors.pink, size: 24.0),
+                                    color: kTextColorAccent, size: 24.0),
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                                  child: Text(
-                                    '100',
-                                    style: TextStyle(
-                                      color: Color(0xFFFCFCFC),
-                                      fontSize: 20,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                  ),
+                                  child: Text('100',
+                                      style: kTextStyle.copyWith(
+                                          decoration:
+                                              TextDecoration.underline)),
                                 ),
                               ],
                             ),
@@ -61,17 +58,13 @@ class HomeScreen extends StatelessWidget {
                               textBaseline: TextBaseline.alphabetic,
                               children: [
                                 Icon(Icons.favorite,
-                                    color: Colors.pink, size: 18.0),
+                                    color: kTextColorAccent, size: 18.0),
                                 Padding(
-                                  padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                                  child: Text(
-                                    '평생 딱 한번 첫! 구매 반값 이벤트',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Color(0xFFFCFCFC),
-                                    ),
-                                  ),
-                                ),
+                                    padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                    child: Text(
+                                      '당신이 무엇을 상상하던 그 이상',
+                                      style: kTextStyle,
+                                    )),
                               ],
                             ),
                           ),
@@ -81,12 +74,9 @@ class HomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Text(
-                                  '가운데\n컨텐츠.',
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                  ),
-                                ),
+                                Text('가운데\n컨텐츠.',
+                                    style:
+                                        kTextStyleAccent.copyWith(fontSize: 40))
                               ],
                             ),
                           ),
