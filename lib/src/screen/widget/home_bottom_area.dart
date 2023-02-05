@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
@@ -27,7 +26,35 @@ class HomeBottomArea extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: kTextColorAccent,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    // bottom modal
+                    showModalBottomSheet(
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0)),
+                      ),
+                      builder: (context) {
+                        return Wrap(
+                          children: [
+                            ListTile(
+                              leading: Icon(Icons.share),
+                              title: Text('상단'),
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.copy),
+                              title: Text('컨텐츠'),
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.edit),
+                              title: Text('하단버튼영역'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                   child: Padding(
                     padding: EdgeInsets.all(10),
                     child: Text('상세보기', style: kTextStyle),

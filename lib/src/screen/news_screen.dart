@@ -86,9 +86,36 @@ class _NewsScreenState extends State<NewsScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        label: Text('back'),
-        onPressed: () => Navigator.pop(context),
-      ),
+          label: Icon(Icons.share_outlined),
+          onPressed: () {
+            // bottom modal
+            showModalBottomSheet(
+              context: context,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0)),
+              ),
+              builder: (context) {
+                return Wrap(
+                  children: [
+                    ListTile(
+                      leading: Icon(Icons.share),
+                      title: Text('Share'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.copy),
+                      title: Text('Copy Link'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.edit),
+                      title: Text('Edit'),
+                    ),
+                  ],
+                );
+              },
+            );
+          }),
     );
   }
 }
