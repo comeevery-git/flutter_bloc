@@ -1,24 +1,38 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'src/bloc/profile_bloc.dart';
 import 'src/bloc/todo_bloc.dart';
 import 'src/observer.dart';
 import 'src/cubit/count_cubit.dart';
+import 'src/repository/profile_client.dart';
+import 'src/repository/profile_repository.dart';
 import 'src/repository/todo_repository.dart';
+import 'src/screen/history/profile_screen.dart';
 import 'src/screen/home_screen.dart';
 import 'src/screen/widget/custom_navigator.dart';
 import 'src/screen/todo_screen.dart';
 import 'src/screen/counter_screen.dart';
-import 'src/screen/setting_screen.dart';
 import 'src/utils/constants.dart';
 
 void main() {
   Bloc.observer = Observer();
+
+  late ProfileClient profileClient;
+  Dio dio = Dio();
+  profileClient = ProfileClient(dio);
+
   runApp(
     MultiProvider(
       // BlocProvider: 자식에게 Bloc을 제공하는 위젯
       // MultiProvider: Provider 여러개 등록
       providers: [
+        BlocProvider(
+          create: (context) => ProfileBloc(
+            ProfileRepository(profileClient: profileClient),
+          ),
+        ),
         BlocProvider(
           create: (context) => TodoBloc(TodoRepository()),
         ),
@@ -61,7 +75,7 @@ class _HomeState extends State<Home> {
     HomeScreen(),
     TodoScreen(),
     CounterScreen(),
-    SettingScreen(),
+    ProfileScreen(),
   ];
   final _navigatorKeyList =
       List.generate(4, (index) => GlobalKey<NavigatorState>());
@@ -131,7 +145,7 @@ class _HomeState extends State<Home> {
                       ),
                       Tab(
                         icon: Icon(
-                          Icons.forum_outlined,
+                          Icons.note_add_rounded,
                           size: 30,
                         ),
                         // child: Text(
@@ -151,7 +165,7 @@ class _HomeState extends State<Home> {
                       ),
                       Tab(
                         icon: Icon(
-                          Icons.settings_applications_outlined,
+                          Icons.person,
                           size: 30,
                         ),
                         // child: Text(
