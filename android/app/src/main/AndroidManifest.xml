@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dev.curogom.state_management">
+    package="dev.comeevery.flutter_ex">
    <application
-        android:label="state_management"
+        android:label="flutter_ex"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

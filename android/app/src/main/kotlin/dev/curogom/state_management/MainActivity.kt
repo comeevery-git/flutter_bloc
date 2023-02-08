@@ -1,4 +1,4 @@
-package dev.curogom.state_management
+package dev.comeevery.flutter_ex
 
 import io.flutter.embedding.android.FlutterActivity
 

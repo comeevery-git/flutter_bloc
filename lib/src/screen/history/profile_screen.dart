@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:state_management/src/bloc/profile_event.dart';
 
 import '../../bloc/profile_bloc.dart';
+import '../../bloc/profile_event.dart';
 import '../../bloc/profile_state.dart';
 import '../../utils/constants.dart';
 import '../counter_screen.dart';

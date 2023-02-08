@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:state_management/src/repository/profile_client.dart';
 
 import '../model/profile.dart';
 import '../repository/profile_repository.dart';
@@ -7,8 +6,7 @@ import 'profile_event.dart';
 import 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  ProfileBloc(this._profileRepository, {required ProfileClient profileClient})
-      : super(Empty()) {
+  ProfileBloc(this._profileRepository) : super(Empty()) {
     on<FetchProfileEvent>(_mapFetchProfileListEvent);
   }
   final ProfileRepository _profileRepository;

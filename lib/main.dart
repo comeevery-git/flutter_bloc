@@ -29,9 +29,8 @@ void main() {
       // MultiProvider: Provider 여러개 등록
       providers: [
         BlocProvider(
-          create: (context) => ProfileBloc(
-            ProfileRepository(profileClient: profileClient),
-          ),
+          create: (context) =>
+              ProfileBloc(ProfileRepository(profileClient: profileClient)),
         ),
         BlocProvider(
           create: (context) => TodoBloc(TodoRepository()),
@@ -53,7 +52,7 @@ class MyApp extends StatelessWidget {
     // final themeNotifier = Provider<ThemeNotifier>(context);
 
     return MaterialApp(
-      title: 'State Manager - Bloc Main',
+      title: 'MAIN',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),

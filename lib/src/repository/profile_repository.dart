@@ -1,6 +1,5 @@
-import 'package:state_management/src/repository/profile_client.dart';
-
 import '../model/profile.dart';
+import 'profile_client.dart';
 
 class ProfileRepository {
   final ProfileClient profileClient;
